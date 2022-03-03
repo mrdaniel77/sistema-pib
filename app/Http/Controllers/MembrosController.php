@@ -8,8 +8,16 @@ use App\Models\Membros;
 
 class MembrosController extends Controller
 {
-    public function index(){
-        return view('membro.index');
+    public function index(Request $request){
+        $pesquisa = $request->pesquisa;
+        if($pesquisa != ''){
+            $dados = Membros::Where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+        }else{
+            $dados = Membros::paginate(10);
+        } 
+       
+        
+        return view('membro.index', compact('dados'));
     }
 
     public function create(){
@@ -18,23 +26,25 @@ class MembrosController extends Controller
 
     }
     
-    public function editar(){
-        return view();
+    public function update($id){
+        $membro = Membros::find($id);
+       return view('membro.form', compact('membro'));
     }
 
-    public function store( Request $request){
+    public function store(Request $request){
 
-        if($request->id =! ''){
+        if($request->id != ''){
             $membro = Membros::find($request->id);
             $membro->update($request->all());
-            
         }else{
             $membro = Membros::create($request->all());
         }
-        return redirect('/');
+       
+        return redirect('/membro/editar/'. $membro->id);
     }
 
-    public function trash(){
-        return view();
+    public function delete($id){
+        $membro = Membros::find($id)->delete();
+        return redirect('membro');
     }
 }

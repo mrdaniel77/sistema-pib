@@ -23,5 +23,32 @@
 <script src="/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/js/pages/dashboard2.js"></script>
+
+<script>
+  function deleta(url) {
+      Swal.fire({
+          title: 'Tem Certeza?',
+          text: "Esta ação não pode ser desfeita!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sim, Deletar!'
+      }).then((result) => {
+          console.log(result)
+          if (result.isConfirmed) {
+            window.location.href = url
+              // Swal.fire(
+              //     'Deletado!',
+              //     'O registro foi deletado!',
+              //     'success'
+              // )
+
+          }
+      })
+
+  }
+</script>
+
 </body>
 </html>

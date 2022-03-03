@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+
 use App\Http\Controllers\MembrosController;
 
 /*
@@ -20,6 +21,9 @@ Route::get('/', [DashboardController::class, 'index']);
 
 Route::get('/membro', [MembrosController::class, 'index']);
 Route::get('/membro/novo', [MembrosController::class, 'create']);
+Route::get('/membro/editar/{id}',[MembrosController::class, 'update']);
 Route::post('/membro/salvar',[MembrosController::class, 'store']);
+Route::get('/membro/deletar', [MembrosController::class, 'delete']);
+
 
 
