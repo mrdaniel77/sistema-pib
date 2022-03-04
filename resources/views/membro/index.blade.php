@@ -78,59 +78,57 @@
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Perfil</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Perfil</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                          <!--conteudo modal-->    
+                      <div class="modal-body ">
+                        <div class="card bg-light d-flex flex-fill">
+                          <div class="card-header text-muted border-bottom-0">
+                          <!--CARGO--> Desenvolvedor
+                          </div>
+                          <div class="card-body pt-0">
+                          <div class="row">
+                            <div class="col-8 d-flex align-items-stretch flex-column">
+                            <h2 class="lead"><b>Daniel Monteiro<!--NOME--></b></h2>
+                            <p class="text-muted text-sm"><b>Aniversário: 19/01/1999 -  </b> 23 Anos   </p>
+                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                              <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address:</b> QR 121 conjunto A casa 13</li>
+                              <br>
+                              <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Telefone #:</b> +55 61 99999-5555 <!--telefone--></li>
+                            </ul>
                             </div>
-                            
-                                <!--conteudo modal-->    
-
-                                <div class="modal-body ">
-                          
-                                <div class="card bg-light d-flex flex-fill">
-                                    <div class="card-header text-muted border-bottom-0">
-                                    <!--CARGO--> Desenvolvedor
-                                    </div>
-                                    <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-8 d-flex align-items-stretch flex-column">
-                                        <h2 class="lead"><b>Daniel Monteiro<!--NOME--></b></h2>
-                                        <p class="text-muted text-sm"><b>Aniversário: 19/01/1999 -  </b> 23 Anos   </p>
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> <b>Address:</b> QR 121 conjunto A casa 13</li>
-                                            <br>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> <b>Telefone #:</b> +55 61 99999-5555 <!--telefone--></li>
-                                        </ul>
-                                        </div>
-                                        <div class="col-4 text-center">
-                                        <img src="../img/Daniel.jpeg" alt="user-avatar" class="img-circle img-fluid" height="128" width="128" style="margin-left:5px">
-                                        </div>
-                                    </div>
-                                    </div>
-                                    
-                                </div>
-                                  
-                              </div>
-                                    
-                                <!--/.conteudo modal-->  
-                            
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div class="col-4 text-center">
+                            <img src="{{$t->foto}}" alt="user-avatar" class="img-circle img-fluid" height="128" width="128" style="margin-left:5px">
                             </div>
                           </div>
+                          </div>
+                        </div>
                       </div>
+                              
+                          <!--/.conteudo modal-->  
+                      
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                    </div>
                     </div>
                     
                   <a href="fornecedores/editar/" class="btn btn-warning">
                     <i class="fas fa-edit"></i>
                   </a>
-                  <a href="#" class="btn btn-danger" onclick="deleta('/membro/deletar/'{{$item->id})">
-                    <i class="fas fa-trash"></i>
-                  </a>
+                  <form action="/membro/deletar/{{ $t->id }}" method="POST" class="ni">
+                  @csrf
+                  @method('DELETE')
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                  </form>
                 </td>
               </tr>
             </tbody>

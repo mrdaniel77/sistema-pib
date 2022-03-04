@@ -23,7 +23,7 @@ Route::get('/membro', [MembrosController::class, 'index']);
 Route::get('/membro/novo', [MembrosController::class, 'create']);
 Route::get('/membro/editar/{id}',[MembrosController::class, 'update']);
 Route::post('/membro/salvar',[MembrosController::class, 'store']);
-Route::get('/membro/deletar', [MembrosController::class, 'delete']);
+Route::delete('/membro/deletar/{id}', [MembrosController::class, 'delete']);
 
 
 

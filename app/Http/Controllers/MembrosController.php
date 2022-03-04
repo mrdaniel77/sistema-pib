@@ -44,7 +44,12 @@ class MembrosController extends Controller
     }
 
     public function delete($id){
-        $membro = Membros::find($id)->delete();
-        return redirect('membro');
+        $membro = Membros::find($id);
+        if(!empty($membro)){
+            $membro->delete();
+            return redirect('membro')->with('success', 'Deletado com sucesso!');
+        } else {
+            return redirect('membro')->with('danger', 'Registro não encontrado!');
+        }
     }
 }
